@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeslaSys Chile - Soporte</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>TeslaSys Chile</h1>
+        <h2>Sistema de Registro de Solicitudes de Soporte</h2>
+    </header>
+
+    <main>
+        <section class="formulario">
+            <h3>Nueva Solicitud de Soporte</h3>
+
+            <label>Nombre del colaborador</label>
+            <input type="text" id="nombre" placeholder="Ingrese su nombre">
+
+            <label>Correo electrónico</label>
+            <input type="email" id="correo" placeholder="Ingrese su correo electronico">
+
+            <label>Área de trabajo</label>
+            <input type="text" id="area" placeholder="Ingrese su área de trabajo">
+
+            <label>Tipo de solicitud</label>
+            <select id="tipo">
+                <option value="">Seleccione una opción</option>
+                <option value="Hardware">Hardware</option>
+                <option value="Software">Software</option>
+                <option value="Redes">Redes</option>
+                <option value="Seguridad">Seguridad</option>
+            </select>
+
+            <label>Descripción del problema</label>
+            <textarea id="descripcion" placeholder="Describa el problema que presenta"></textarea>
+
+            <button onclick="registrarSolicitud()">Registrar Solicitud</button>
+            <button onclick="limpiarFormulario()" class="limpiar">Limpiar Formulario</button>
+
+            <p id="mensaje"></p>
+        </section>
+
+        <section class="tabla">
+            <h3>Solicitudes Registradas</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Nombre</th>
+                        <th>Área</th>
+                        <th>Tipo de Solicitud</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaSolicitudes"></tbody>
+            </table>
+
+            <p id="totalSolicitudes">Total de solicitudes registradas: 0</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>TeslaSys Chile - Área de Soporte TI</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

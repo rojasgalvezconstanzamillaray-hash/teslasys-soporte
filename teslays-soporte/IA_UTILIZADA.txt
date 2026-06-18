@@ -5,4 +5,4 @@ Prompt utilizado:
 Mejora visualmente este formulario HTML utilizando CSS moderno y diseño responsivo.
 
 Resultado aplicado:
-Se incorporó diseño responsivo, colores corporativos, validaciones con JavaScript, manipulación del DOM y actualización automática de la tabla de solicitudes registradas.
+Se incorporó un diseño responsivo, colores corporativos, validaciones con JavaScript, manipulación del DOM y actualización automática de la tabla de solicitudes registradas.

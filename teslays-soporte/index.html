@@ -3,64 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema de registro de solicitudes de soporte TeslaSys Chile">
     <title>TeslaSys Chile - Soporte</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>TeslaSys Chile</h1>
-        <h2>Sistema de Registro de Solicitudes de Soporte</h2>
+    <header role="banner">
+        <div class="header-content">
+            <div class="header-brand">
+                <h1>TeslaSys Chile</h1>
+                <p class="tagline">Soporte Técnico</p>
+            </div>
+            <p class="header-subtitle">Sistema de Registro de Solicitudes de Soporte</p>
+        </div>
     </header>
 
-    <main>
-        <section class="formulario">
-            <h3>Nueva Solicitud de Soporte</h3>
+    <main role="main">
+        <section class="formulario" aria-labelledby="form-title">
+            <div class="form-header">
+                <h2 id="form-title">Nueva Solicitud de Soporte</h2>
+                <p class="form-subtitle">Complete el formulario para registrar su solicitud</p>
+            </div>
 
-            <label>Nombre del colaborador</label>
-            <input type="text" id="nombre" placeholder="Ingrese su nombre">
+            <form id="supportForm" novalidate>
+                <div class="form-group">
+                    <label for="nombre">Nombre del colaborador</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Juan García" required aria-required="true" aria-describedby="nombre-help">
+                    <span class="help-text" id="nombre-help">Ingrese su nombre completo</span>
+                </div>
 
-            <label>Correo electrónico</label>
-            <input type="email" id="correo" placeholder="Ingrese su correo electronico">
+                <div class="form-group">
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" name="correo" placeholder="ejemplo@empresa.com" required aria-required="true" aria-describedby="correo-help">
+                    <span class="help-text" id="correo-help">Correo válido con formato</span>
+                </div>
 
-            <label>Área de trabajo</label>
-            <input type="text" id="area" placeholder="Ingrese su área de trabajo">
+                <div class="form-group">
+                    <label for="area">Área de trabajo</label>
+                    <input type="text" id="area" name="area" placeholder="Ej: Administración" required aria-required="true" aria-describedby="area-help">
+                    <span class="help-text" id="area-help">Indique su departamento</span>
+                </div>
 
-            <label>Tipo de solicitud</label>
-            <select id="tipo">
-                <option value="">Seleccione una opción</option>
-                <option value="Hardware">Hardware</option>
-                <option value="Software">Software</option>
-                <option value="Redes">Redes</option>
-                <option value="Seguridad">Seguridad</option>
-            </select>
+                <div class="form-group">
+                    <label for="tipo">Tipo de solicitud</label>
+                    <select id="tipo" name="tipo" required aria-required="true">
+                        <option value="">-- Seleccione una opción --</option>
+                        <option value="Hardware">🖥️ Hardware</option>
+                        <option value="Software">💾 Software</option>
+                        <option value="Redes">🌐 Redes</option>
+                        <option value="Seguridad">🔒 Seguridad</option>
+                    </select>
+                </div>
 
-            <label>Descripción del problema</label>
-            <textarea id="descripcion" placeholder="Describa el problema que presenta"></textarea>
+                <div class="form-group">
+                    <label for="descripcion">Descripción del problema</label>
+                    <textarea id="descripcion" name="descripcion" placeholder="Describa detalladamente el problema que presenta..." required aria-required="true" aria-describedby="desc-help"></textarea>
+                    <span class="help-text" id="desc-help">Mínimo 10 caracteres</span>
+                </div>
 
-            <button onclick="registrarSolicitud()">Registrar Solicitud</button>
-            <button onclick="limpiarFormulario()" class="limpiar">Limpiar Formulario</button>
+                <div class="button-group">
+                    <button type="button" class="btn btn-primary" onclick="registrarSolicitud()">📤 Registrar Solicitud</button>
+                    <button type="button" class="btn btn-secondary" onclick="limpiarFormulario()">🔄 Limpiar Formulario</button>
+                </div>
+            </form>
 
-            <p id="mensaje"></p>
+            <div id="mensaje" class="alert" role="alert" aria-live="polite" aria-atomic="true"></div>
         </section>
 
-        <section class="tabla">
-            <h3>Solicitudes Registradas</h3>
+        <section class="tabla" aria-labelledby="table-title">
+            <div class="table-header">
+                <h2 id="table-title">Solicitudes Registradas</h2>
+                <p class="table-subtitle" id="totalSolicitudes">Total: 0 solicitudes</p>
+            </div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>N°</th>
-                        <th>Nombre</th>
-                        <th>Área</th>
-                        <th>Tipo de Solicitud</th>
-                        <th>Descripción</th>
-                    </tr>
-                </thead>
-                <tbody id="tablaSolicitudes"></tbody>
-            </table>
-
-            <p id="totalSolicitudes">Total de solicitudes registradas: 0</p>
+            <div class="table-wrapper">
+                <table role="table" aria-label="Lista de solicitudes de soporte registradas">
+                    <thead>
+                        <tr>
+                            <th scope="col">N°</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Área</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaSolicitudes"></tbody>
+                </table>
+            </div>
         </section>
     </main>
 
